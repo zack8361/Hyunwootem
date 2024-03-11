@@ -26,4 +26,5 @@ public class ManagerController {
 
         return "index";
     }
+
 }

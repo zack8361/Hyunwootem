@@ -15,12 +15,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
 @RequiredArgsConstructor
-
+@RequestMapping("/notice")
 public class NoticeController {
 
     private final MemberRepository memberRepository;
@@ -37,24 +40,35 @@ public class NoticeController {
         return "index";
     }
 
-    
-    // 공지사항 페이지 처리 localhost:8080/findNotice?page=0 부터 날리면됨
+    // 전체 공지사항 페이지 처리 localhost:8080/findNotice?page=0 부터 날리면됨
     @GetMapping("/findNotice")
-    public String findAllNotice(@PageableDefault(size = 15) Pageable pageable){
+    public String findAllNotice(@PageableDefault(size = 15) Pageable pageable, Model model){
         Page<Notice> page = noticeRepository.findAll(pageable);
         Page<NoticeResponseDto> map = page.map(NoticeResponseDto::new);
-
-        for (NoticeResponseDto noticeResponseDto : map) {
-            System.out.println("noticeResponseDto = " + noticeResponseDto);
-        }
-
+        model.addAttribute("notices",map.getContent());
         return "index";
     }
-    
+
+    // 공지 단건 조회
+    @GetMapping("/findNoticeDetail/{id}")
+    public String findNoticeDetail(@PathVariable("id") Long id){
+        Notice notice = noticeService.findNoticeDetail(id);
+
+        NoticeResponseDto noticeResponseDto = new NoticeResponseDto(notice);
+        return "index";
+    }
+
     // 공지 수정
     @PutMapping("/updateNotice/{id}")
     public String updateNotice(@PathVariable("id") Long id,@ModelAttribute("noticeRequest") NoticeRequestDto noticeRequest) {
         noticeService.updateNotice(id,noticeRequest.getTitle(),noticeRequest.getContent());
+        return "index";
+    }
+
+    // 공지 삭제
+    @DeleteMapping("/deleteNotice/{id}")
+    public String deleteNotice(@PathVariable("id") Long id){
+        noticeService.deleteNoticeById(id);
         return "index";
     }
 }
