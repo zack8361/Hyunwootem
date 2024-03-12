@@ -32,7 +32,7 @@ public class Notice extends NoticeAuditing{
         this.member = member;
         member.getNotices().add(this);
     }
-    public Notice(String title, String content, Member member) {
+    private Notice(String title, String content, Member member) {
         this.title = title;
         this.content = content;
         setMember(member);
@@ -45,5 +45,4 @@ public class Notice extends NoticeAuditing{
         requireNonNull(member);
         return new Notice(title,content,member);
     }
-
 }

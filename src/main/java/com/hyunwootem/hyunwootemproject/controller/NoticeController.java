@@ -41,7 +41,7 @@ public class NoticeController {
     }
 
     // 전체 공지사항 페이지 처리 localhost:8080/findNotice?page=0 부터 날리면됨
-    @GetMapping("/findNotice")
+    @GetMapping("/getNotice")
     public String findAllNotice(@PageableDefault(size = 15) Pageable pageable, Model model){
         Page<Notice> page = noticeRepository.findAll(pageable);
         Page<NoticeResponseDto> map = page.map(NoticeResponseDto::new);
@@ -50,7 +50,7 @@ public class NoticeController {
     }
 
     // 공지 단건 조회
-    @GetMapping("/findNoticeDetail/{id}")
+    @GetMapping("/getNoticeDetail/{id}")
     public String findNoticeDetail(@PathVariable("id") Long id){
         Notice notice = noticeService.findNoticeDetail(id);
 
