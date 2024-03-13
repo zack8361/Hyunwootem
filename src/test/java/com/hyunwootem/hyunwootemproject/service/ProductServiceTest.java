@@ -34,7 +34,6 @@ class ProductServiceTest {
         for (ProductCategory productCategory : allProduct) {
             System.out.println("productCategory = " + productCategory);
         }
-
     }
 
 }

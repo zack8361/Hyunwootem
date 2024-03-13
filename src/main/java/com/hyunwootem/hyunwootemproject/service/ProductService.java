@@ -1,7 +1,9 @@
 package com.hyunwootem.hyunwootemproject.service;
 
 
+import com.hyunwootem.hyunwootemproject.dto.request.ProductDetailRequestDto;
 import com.hyunwootem.hyunwootemproject.entity.ProductCategory;
+import com.hyunwootem.hyunwootemproject.entity.ProductDetail;
 import com.hyunwootem.hyunwootemproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,4 +57,5 @@ public class ProductService {
     public void deleteProductCategory(Long id) {
         productRepository.deleteById(id);
     }
+
 }
