@@ -54,6 +54,7 @@ public class ProductService {
         productCategory.setImage(imageUrl);
     }
 
+    @Transactional
     public void deleteProductCategory(Long id) {
         productRepository.deleteById(id);
     }

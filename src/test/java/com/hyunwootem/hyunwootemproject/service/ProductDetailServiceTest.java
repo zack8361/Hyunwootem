@@ -20,7 +20,7 @@ class ProductDetailServiceTest {
     void create() throws Exception {
         //given
         for(int i = 0; i<10; i++) {
-            Long productDetail = productDetailService.createProductDetail(1L, "전선1부품", "img src1", "이것은 전선 1에대한 설명", 1);
+            Long productDetail = productDetailService.createProductDetail(2L, "전선1부품", "img src1", "이것은 전선 1에대한 설명", 1);
             System.out.println("productDetail = " + productDetail + ": 생성 완료");
             //when
         }

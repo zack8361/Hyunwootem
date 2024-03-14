@@ -4,12 +4,14 @@ package com.hyunwootem.hyunwootemproject.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import static jakarta.persistence.FetchType.*;
 import static java.util.Objects.requireNonNull;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 public class ProductDetail {
 

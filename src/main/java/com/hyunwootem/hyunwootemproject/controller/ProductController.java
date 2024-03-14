@@ -59,7 +59,7 @@ public class ProductController {
         return new ProductCategoryDto(productCategory);
     }
 
-    // 물품 category 수정
+    // category 수정
     @PutMapping("/updateProductCategory")
     public ResponseEntity<?> updateProductCategory(@ModelAttribute("product") ProductRequestDto product) {
 
@@ -68,7 +68,7 @@ public class ProductController {
         return ResponseEntity.ok(200);
     }
 
-    // 물품 category 삭제
+    // category 삭제
     @DeleteMapping("/deleteProductCategory/{id}")
     public ResponseEntity<?> deleteProductCategory(@PathVariable("id") Long id){
         productService.deleteProductCategory(id);
@@ -77,7 +77,7 @@ public class ProductController {
     }
     
 
-    // 물품 categoryDetail 추가
+    // categoryDetail 추가
     @PostMapping("/createProductDetail/{id}")
     public ResponseEntity<?> createProductDetail(
             @PathVariable("id")Long id,
@@ -88,19 +88,43 @@ public class ProductController {
         return ResponseEntity.ok(200);
     }
     
-    // 물품 CategoryDetail 전체 읽기
+    // CategoryDetail 페이징 조회
     @GetMapping("/getAllProductDetail")
     public Page<ProductDetailDto> getAllProductDetail(@PageableDefault(size = 5) Pageable pageable){
+
         return productDetailRepository.findAll(pageable).map(ProductDetailDto::new);
     }
-
     
+    // CategoryDetail 단건 조회
+    @GetMapping("/getProductDetail/{id}")
+    public ProductDetailDto getProductDetail(@PathVariable("id") Long id){
+
+        ProductDetail productDetail = productDetailRepository.findById(id).orElseThrow();
+
+        return new ProductDetailDto(productDetail);
+    }
+
+
+    //CategoryDetail 수정
+    @PutMapping("/updateProductDetail/{id}")
+    public ResponseEntity<?> updateProductDetail(@PathVariable("id") Long id,
+                                                 @RequestBody ProductDetailRequestDto request){
+
+        productDetailService.updateProductDetail(id,request.getName(),request.getImage(),request.getContent(),request.getAmount());
+
+        return ResponseEntity.ok(200);
+    }
+    
+    
+    // CategoryDetail 삭제
+    @DeleteMapping("/deleteProductDetail/{id}")
+    public ResponseEntity<?> deleteProductDetail(@PathVariable("id") Long id){
+
+        productDetailRepository.deleteById(id);
+
+        return ResponseEntity.ok(200);
+    }
 }
-
-
-
-
-
 
 
 
