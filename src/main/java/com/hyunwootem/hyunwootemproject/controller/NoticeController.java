@@ -24,6 +24,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/notice")
+@CrossOrigin(origins = "http://localhost:3000")
 public class NoticeController {
 
     private final MemberRepository memberRepository;

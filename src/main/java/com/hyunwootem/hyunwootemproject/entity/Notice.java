@@ -6,7 +6,6 @@ import lombok.*;
 
 
 import static jakarta.persistence.FetchType.*;
-import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 import static lombok.AccessLevel.*;
 

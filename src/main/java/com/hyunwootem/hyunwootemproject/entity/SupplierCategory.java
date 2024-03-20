@@ -10,6 +10,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.*;
 import static lombok.AccessLevel.*;
 
 @Entity
@@ -24,6 +25,9 @@ public class SupplierCategory {
 
     private String name;
 
-    @OneToMany(mappedBy = "supplierCategory")
+    @OneToMany(mappedBy = "supplierCategory",cascade = ALL)
     private List<SupplierDetail> supplierDetailList = new ArrayList<>();
+    public SupplierCategory(String name) {
+        this.name = name;
+    }
 }
