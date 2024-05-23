@@ -54,7 +54,6 @@ public class NoticeController {
     @GetMapping("/getNoticeDetail/{id}")
     public String findNoticeDetail(@PathVariable("id") Long id){
         Notice notice = noticeService.findNoticeDetail(id);
-
         NoticeResponseDto noticeResponseDto = new NoticeResponseDto(notice);
         return "index";
     }
