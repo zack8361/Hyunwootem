@@ -1,9 +1,6 @@
 package com.hyunwootem.hyunwootemproject.controller;
-
-
 import com.hyunwootem.hyunwootemproject.dto.request.NoticeRequestDto;
 import com.hyunwootem.hyunwootemproject.dto.response.NoticeResponseDto;
-import com.hyunwootem.hyunwootemproject.entity.Member;
 import com.hyunwootem.hyunwootemproject.entity.Notice;
 import com.hyunwootem.hyunwootemproject.repository.MemberRepository;
 import com.hyunwootem.hyunwootemproject.repository.NoticeRepository;
@@ -17,10 +14,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/notice")
@@ -35,7 +28,6 @@ public class NoticeController {
 
     @PostMapping("/createNotice")
     public String createNotice(@ModelAttribute("noticeRequest") @Valid NoticeRequestDto noticeRequest) {
-
         Long createNoticeId = noticeService.createNotice(noticeRequest.getMemberId(), noticeRequest.getTitle(), noticeRequest.getContent());
         System.out.println("createNoticeId = " + createNoticeId + "번째 공지사항 생성 완료");
         return "index";
@@ -54,7 +46,6 @@ public class NoticeController {
     @GetMapping("/getNoticeDetail/{id}")
     public String findNoticeDetail(@PathVariable("id") Long id){
         Notice notice = noticeService.findNoticeDetail(id);
-
         NoticeResponseDto noticeResponseDto = new NoticeResponseDto(notice);
         return "index";
     }

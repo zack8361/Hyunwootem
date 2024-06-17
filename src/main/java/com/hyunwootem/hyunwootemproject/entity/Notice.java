@@ -6,6 +6,7 @@ import lombok.*;
 
 
 import static jakarta.persistence.FetchType.*;
+import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.util.Objects.requireNonNull;
 import static lombok.AccessLevel.*;
 
@@ -16,7 +17,7 @@ import static lombok.AccessLevel.*;
 @ToString(of = {"title","content"})
 public class Notice extends NoticeAuditing{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = IDENTITY)
     @Column(name = "notice_id")
     private Long id;
     private String title;

@@ -37,15 +37,14 @@ public class ProductController {
     @PostMapping("/createProductCategory")
     public ResponseEntity<?> createProductCategory(@ModelAttribute("product") ProductRequestDto product) {
 
-        Long productCategoryId = productService.createProductCategory(product.getName(), product.getImage());
 
+        Long productCategoryId = productService.createProductCategory(product.getName(), product.getImage());
         return ResponseEntity.ok(200);
     }
 
     // 물품 category 전체 조회
     @GetMapping("/getAllProductCategory")
     public List<ProductCategoryDto> getAllProductCategory() {
-
         return productRepository.findAll().stream()
                 .map(ProductCategoryDto::new)
                 .collect(Collectors.toList());

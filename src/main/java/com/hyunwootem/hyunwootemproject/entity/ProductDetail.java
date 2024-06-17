@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import static jakarta.persistence.FetchType.*;
+import static jakarta.persistence.GenerationType.*;
 import static java.util.Objects.requireNonNull;
 
 @Entity
@@ -15,7 +16,7 @@ import static java.util.Objects.requireNonNull;
 @NoArgsConstructor
 public class ProductDetail {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = IDENTITY)
     @Column(name = "product_detail_id")
     private Long id;
 
