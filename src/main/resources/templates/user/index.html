@@ -1,4 +1,89 @@
-<link th:href="@{/css/user/main/mainStyle.css}" rel="stylesheet" />
-<section id="sh_section">
-    <div th:include="user/main/main.html :: main"></div>
-</section>
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="naver-site-verification" content=""/><!-- 네이버 소유확인 -->
+    <meta name="description" content=""><!-- 사이트 설명문구 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sample">
+    <meta property="og:description" content=""><!-- 사이트 설명문구 -->
+    <meta property="og:image" content="img/common/logo.png">
+    <meta property="og:url" content="">
+    <title>Sample</title>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script src="/js/topmenu_script.js"></script>
+    <script src="/js/scrollsmooth.js"></script>
+    <script src="/js/feather.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="/css/user/main/aos.css">
+    <link rel="stylesheet" href="/css/user/main/sh_common.css">
+    <link rel="stylesheet" href="/css/user/main/sh_main.css">
+    <link rel="stylesheet" href="/css/user/main/sh_sub.css">
+    <link rel="stylesheet" href="/css/user/main/swiper.min.css">
+</head>
+<body>
+
+<script>
+    AOS.init();
+</script>
+
+<!-- sh_wrapper [s] -->
+<div id="sh_wrapper">
+    <div th:insert="~{user/sub/header.html :: header}"></div>
+    <!-- smooth_scroll [s] -->
+    <div id="smooth_scroll">
+        <!-- sh_container [s] -->
+        <div id="sh_container">
+            <!-- sh_container_wrapper [s] -->
+            <div id="sh_container_wrapper">
+                <!-- mainVisual [s] -->
+                <div th:insert="~{user/main/main.html :: main}"></div>
+                <!-- sh_section [s] -->
+                <section id="sh_section">
+                    <!-- inc01 [s] -->
+                    <div th:insert="~{user/main/inc01.html :: inc01}"></div>
+                    <!-- inc02 [s] -->
+                    <div th:insert="~{user/main/inc02.html :: inc02}"></div>
+                    <!-- inc03 [s] -->
+                    <div th:insert="~{user/main/inc03.html :: inc03}"></div>
+                </section>
+            </div>
+        </div>
+        <!-- sh_container [e] -->
+
+        <div id="toTop">
+            <i data-feather="arrow-up"></i>
+        </div>
+        <!--sh_ft [s] -->
+        <div th:insert="~{user/sub/footer.html :: footer}"></div>
+    </div>
+    <!-- smooth_scroll [e] -->
+</div>
+<!-- sh_wrapper [e] -->
+
+<script>
+    const supahscroll = new SupahScroll({
+        el: '#smooth_scroll',
+        speed: 0.1 });
+    feather.replace();
+    var pageup = $("html").innerHeight();
+    $(window).on("scroll",function(){
+        if($(window).scrollTop() > pageup/3) {
+            $('#toTop').addClass("on");
+        } else{
+            $('#toTop').removeClass("on");
+        }
+        return false;
+    });
+    $('#toTop').click(function(){
+        $("html, body").animate({scrollTop:0}, 400);
+        return false;
+    });
+</script>
+
+</body>
+</html>
+

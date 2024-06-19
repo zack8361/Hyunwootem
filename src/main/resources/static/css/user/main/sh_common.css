@@ -1,0 +1,84 @@
+@charset "utf-8";
+@import url("./font-awesome/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Poppins:wght@100;200;300;400;500;600;700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@font-face{font-family:'LotteMartDreamMedium';font-style:normal;font-weight:400;src:url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff')}
+@font-face{font-family:'LotteMartDreamBold';font-style:normal;font-weight:700;src:url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff')}
+@font-face{font-family:'LotteMartDreamLight';font-style:normal;font-weight:300;src:url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff')}
+.lottemartdream *{font-family:'LotteMartDream', sans-serif}
+
+/* ========================== 초기화 [s] */
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block}
+body{line-height:1;font-family:'Noto Sans KR'}
+ol, ul, dl, dt, dd{list-style:none}
+blockquote, q{quotes:none}
+blockquote:before, blockquote:after,q:before, q:after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+input, button{margin:0;padding:0;font-family:'Noto Sans KR'}
+input[type="submit"]{cursor:pointer}
+button{cursor:pointer}
+textarea, select{font-family:'Noto Sans KR'}
+select{margin:0}
+a{color:#777;text-decoration:none}
+label, input, button, select, img{vertical-align:middle}
+body{font-size:0.81em}
+*, :after, :before{box-sizing:border-box}
+*{-webkit-text-size-adjust:none}
+.sound_only{display:inline-block !important;position:absolute;top:0;left:0;margin:0 !important;padding:0 !important;font-size:0;line-height:0;border:0 !important;overflow:hidden !important}
+/* ========================== 초기화 [e] */
+
+:root{--primary:#00b68f;--primary-25:rgba(0,182,143,.25)}
+.supah-scroll{position:fixed;z-index:1;top:0;left:0;width:100%;height:auto;will-change:transform;overflow:hidden}
+
+/* =========================== HEADER */
+#sh_hd{position:fixed;z-index:15;width:100%;font-size:15px;font-family:'LotteMartDreamMedium'}
+#shGnb{display:flex;align-items:center;position:relative;width:100%;height:90px;padding:0 6.5%}
+#shGnb.blur{backdrop-filter:blur(15px); background:rgba(0,0,0,.3);transition:background .2s}
+#shGnb.blur.on{backdrop-filter:blur(0);background-color:transparent}
+#shGnb.sub{background:#fff}
+.sh_lnb_bg{display:none;position:absolute;top:0;left:0;width:100%;height:220px;background-color:#fff}
+/* 로고 */
+#shGnb .sh_logo{position:relative;z-index:20}
+/* 대분류  */
+#shGnb .sh_nav{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max-content}
+#shGnb .sh_nav > li{float:left;position:relative;padding:0 25px;line-height:70px}
+#shGnb .sh_nav > li > a{display:block;font-size:17px;color:#fff;transition:all .2s}
+#shGnb.on .sh_nav > li > a{color:#222}
+#shGnb.sub .sh_nav > li > a{color:#222}
+/* 소분류 */
+#shGnb .sh_lnb_s{display:none;position:absolute;left:50%;transform:translateX(-50%);min-width:100%;width:max-content;min-height:145px}
+#shGnb .sh_lnb_s li a{display:block;line-height:1.8;text-align:center;color:#999;transition:all .2s;font-family:'LotteMartDreamLight'}
+#shGnb .sh_lnb_s li a:hover{color:var(--primary)}
+/* sns */
+#shGnb .sh_tip{margin-left:auto}
+#shGnb .sh_tip{display:flex}
+#shGnb .sh_tip li+li{margin-left:20px}
+#shGnb .sh_tip li a{font-size:13px;color:#fff}
+#shGnb.on .sh_tip li a{color:#222}
+#shGnb.sub .sh_tip li a{color:#222}
+
+/* =========================== CONTAINER */
+#sh_container{position:relative;z-index:10;min-width:1200px;width:100%}
+#sh_container_wrapper.sub{padding-top:150px}
+#sh_content{overflow:hidden;position:relative;z-index:10;width:100%;max-width:1200px;min-height:550px;padding:70px 0;margin:0 auto;background:#fff}
+
+/* =========================== MAIN */
+#sh_section{overflow:hidden;position:relative;min-width:1200px;font-size:15px;line-height:1.8;color:#777;font-family:'LotteMartDreamLight'}
+
+/* =========================== FOOTER */
+#toTop{opacity:0;cursor:pointer;position:fixed;right:30px;bottom:10%;z-index:101;display:flex;width:55px;height:55px;margin-bottom:-50px;border-radius:12px;background:var(--primary);transition:all .4s}
+#toTop svg{margin:auto;color:#fff}
+#toTop.on{opacity:1;margin-bottom:0}
+#sh_ft{min-width:1200px;font-size:14px;color:rgba(255,255,255,.4);line-height:2;background:#2a2d2c;font-family:'LotteMartDreamLight'}
+#sh_ft .ft_nav{display:flex;justify-content:center;align-items:center;height:80px;border-bottom:1px solid rgba(255,255,255,.15)}
+#sh_ft .ft_nav li+li:before{display:inline-block;content:"";width:1px;height:12px;margin:0 25px;background:rgba(255,255,255,.2)}
+#sh_ft .ft_nav li a{opacity:.4;font-size:16px;color:#fff;transition:all .2s}
+#sh_ft .ft_nav li a:hover{opacity:1}
+#sh_ft .inner{display:flex;padding:60px 6.5%}
+#sh_ft .ft_logo{width:20%}
+#sh_ft .info p{margin-bottom:15px;font-size:18px;font-weight:700;font-family:'Play'}
+#sh_ft .links{margin:auto 0 0 auto}
+#sh_ft .links a{font-size:13px;color:rgba(255,255,255,.4);font-family:'LotteMartDreamMedium'}
+#sh_ft .links a+a{margin-left:15px}
+

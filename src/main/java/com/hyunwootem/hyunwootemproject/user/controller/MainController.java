@@ -14,6 +14,6 @@ public class MainController {
     public String kong(){
         String method = "MainController.kong";
         log.info("method={}",method);
-        return "user/main/main";
+        return "user/index";
     }
 }
