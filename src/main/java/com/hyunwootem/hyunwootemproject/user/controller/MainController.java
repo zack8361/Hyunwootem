@@ -11,9 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping("/main")
-    public String kong(){
+    public String main(){
         String method = "MainController.kong";
-        log.info("method={}",method);
+        exitMethod(method);
         return "user/index";
+    }
+
+    @GetMapping("/sub")
+    public String sub(){
+        String method = "MainController.sub";
+        exitMethod(method);
+        return "user/subPage";
+    }
+
+
+    private void exitMethod(String method){
+        log.info("method={}",method);
     }
 }
